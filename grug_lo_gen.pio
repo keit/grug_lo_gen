@@ -17,6 +17,8 @@
 
 
 % c-sdk {
+#include <math.h>
+
 static pio_sm_config c;
 
 void find_clkdiv_from_float(float div, uint16_t *div_int, uint8_t *div_frac)
