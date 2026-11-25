@@ -16,12 +16,18 @@ Stereo".
 Quisk also works on Windows.  There, I set Radio Sound Output to
 "Primary" and I/Q Rx Sample Input to "Line In".
 
-You must edit this python file to select your serial port.  If the
-serial port is not found, quisk will crash.
+On macOS (tested with a Focusrite Scarlett 2i2 4th Gen), Quisk uses
+PortAudio.  Set I/Q Rx Sample Input to "portaudio:Scarlett 2i2 4th Gen",
+I channel 0, Q channel 1, and Radio Sound Output to e.g.
+"portaudio:iMac Speakers".  Quisk needs pyserial in its Python
+environment (pip install pyserial).
 
-Also, it does not work right at startup.  You have to tune something
-first, e.g. by entering a frequency in Hz into the tuning box in the
-GUI.  Then, all is well.
+The serial port is auto-detected (first /dev/cu.usbmodem* or
+/dev/ttyACM*).  Set SERIAL_PORT in the python file to override it,
+e.g. "COM10" on Windows.  If the port cannot be opened, the reason is
+shown in quisk's status line and the LO is simply not controlled.
+
+At startup the Pico is set to the configured fixed VFO frequency.
 
 You could also use gqrx instead of quisk, gqrx is usually excellent,
 but when reading from a sound card, it does not appear to correctly
